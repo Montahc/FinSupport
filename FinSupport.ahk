@@ -2,13 +2,14 @@
 ; #Warn  ; Enable warnings to assist with detecting common errors.
 
 ;Code by Montahc
-;FinSupport v1.0
+;FinSupport v1.1
 
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 CoordMode, Click, Screen
 SendMode Input
 divisions := 40
+doubleclickdelay := 100
 
 ^1::
 MouseGetPos, xposA, yposA
@@ -35,11 +36,15 @@ yinc := (yposB - yposA)/divisions
 i := 0
 while(i < divisions) 
 {
-	Sleep, 50
+	Sleep, 100
+	SetTimer, RemoveToolTip, -100
 	xcur := xcur + xinc
 	ycur := ycur + yinc
 	MouseMove, xcur, ycur
-	Click
+	ToolTip, % xcur " " ycur
+	Click, Down
+	Sleep, doubleclickdelay
+	Click, Up
 	i+=1
 }
 BlockInput Off
@@ -49,6 +54,12 @@ return
 SoundBeep
 InputBox, OutputVar, Set number of supports, How many supports to create in the line?
 divisions := OutputVar
+return
+
+^TAB::
+SoundBeep
+InputBox, OutputVar, Set Double Click Delay (in ms)?
+doubleclickdelay := OutputVar
 return
 
 
