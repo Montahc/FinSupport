@@ -27,10 +27,14 @@ Tips:
 3. If your supports are conflicting, try making them thinner diameter.  Usually the supports fuse into one solid fin anyway, which should be plenty strong enough.
 
 CHANGELOG
+
 V1.1
+
 -Added a sleep delay to help with Chitubox 2.0 not liking very fast clicking.  I expect the severity of this problem could be different based on your computer's processing speed, so I have added a variable, doubleclickdelay, which can be set using the new Ctrl+Tab Hotkey.  Thanks to bloodhntr for the report and video.
+
 -A related issue that I found while working on solving this bug is that Chitubox now allows supports to be stacked onto each other by default.  The best workaround I could find was to make the supports extremely thin so they do not collide.  I ended up making the middle diameter as well as the upper and lower diameter 0.2mm which worked well.
 
 Known Issues
+
 I encountered a weird issue where the script would sometimes click in random parts of the screen far from the intended location.  This was intermittent and I couldn't figure out a reliable cause.  I'll investigate further if I have time, but if anyone else is encountering this and believes they understand what's happening, please feel free to report an issue with the details.
 
